@@ -2555,10 +2555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3367a41c429cd024faa12854d50ac5bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Yincrement: 3.15
+  YDisposition: 3.15
   speed: 50
-  maxHeight: 3.15
-  minHeight: -3.15
   health: 5
   effect: {fileID: 9077490242820810129, guid: 08011580593c44b4db52bff7410bc34c, type: 3}
   healthDisplay: {fileID: 971532978}
