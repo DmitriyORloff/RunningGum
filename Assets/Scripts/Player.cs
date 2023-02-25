@@ -54,5 +54,16 @@ public class Player : MonoBehaviour
         }
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.CompareTag("Enemy"))
+        {
+            GameObject.FindGameObjectWithTag("BG_EFFECTS_CREATED").GetComponent<AudioEffector>().Playback(AudioEffector.Clips.EnemyCollision);
+            Enemy enemy = other.GetComponent<Enemy>();
+            health -= enemy.damage;
+            enemy.Pop();
+        }
+    }
 }
 

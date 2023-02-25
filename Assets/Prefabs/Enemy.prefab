@@ -114,7 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   effect: {fileID: 3665896384464495867, guid: 8d619f0ec8064444fbabd03a0a719d4e, type: 3}
-  sound: {fileID: 740047517680902653, guid: 9290ae23bad9d4f4ea16fb9c27fd874a, type: 3}
 --- !u!58 &8850542143983559231
 CircleCollider2D:
   m_ObjectHideFlags: 0
