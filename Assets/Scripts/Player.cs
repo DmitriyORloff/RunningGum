@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        UpdateHealthText();
         targetPos = transform.position;
     }
 
@@ -41,10 +42,14 @@ public class Player : MonoBehaviour
         Instantiate(effect, transform.position, Quaternion.identity);
     }
 
+    private void UpdateHealthText() {
+        healthDisplay.text = "Lives: " + health.ToString();
+    }
+
     private void Damage(int damage)
     {
         health -= damage;
-        healthDisplay.text = "Lives: " + health.ToString();
+        UpdateHealthText();
         if (health <= 0)
         {
             panel.SetActive(true);
