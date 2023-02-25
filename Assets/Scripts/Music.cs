@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class Music : MonoBehaviour
 {
-    public AudioSource ad;
+    private AudioSource ad;
 
     void Start()
     {
-        ad.enabled = PlayerPrefs.GetInt("music") == 1;
+        ad = GetComponent<AudioSource>();
+        ad.mute = PlayerPrefs.GetInt("music") == 0;
     }
 
     public void ToggleMusic()
     {
-        PlayerPrefs.SetInt("music", ad.enabled ? 0 : 1);
-        ad.enabled = !ad.enabled;
+        ad.mute = !ad.mute;
+        PlayerPrefs.SetInt("music", ad.mute ? 0 : 1);
     }
 }
