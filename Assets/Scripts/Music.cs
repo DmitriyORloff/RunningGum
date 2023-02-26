@@ -10,6 +10,7 @@ public class Music : MonoBehaviour
 
     void Start()
     {
+        // Similar to other sound toggle scripts
         ad = GetComponent<AudioSource>();
         ad.mute = PlayerPrefs.GetInt("music") == 0;
     }
