@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     public int score;
     public Text scoreDisplay;
-    public Text HighScoreText; // это добавил
+    public Text HighScoreText;
     private Player player;
 
     private void Start()
@@ -20,10 +20,13 @@ public class ScoreManager : MonoBehaviour
         if (other.CompareTag("Enemy") && player.health > 0)
         {
             score++;
-            if (PlayerPrefs.GetInt("highscore") < score) //эту и дальше вписал после
+            scoreDisplay.text = "Score: " + score;
+         
+            if (PlayerPrefs.GetInt("highscore") < score)
+            {
                 PlayerPrefs.SetInt("highscore", score);
-            scoreDisplay.text = "Score: " + score; // это как было, когда работало
-            UpdateHighScoreText();
+                UpdateHighScoreText();
+            }
         }
     }
     private void UpdateHighScoreText()

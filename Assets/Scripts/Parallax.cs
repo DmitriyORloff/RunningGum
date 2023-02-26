@@ -11,12 +11,11 @@ public class Parallax : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        transform.Translate(speed * Time.deltaTime * Vector2.left);
 
         if(transform.position.x <= endX)
         {
-            Vector2 pos = new Vector2(startX, transform.position.y);
-            transform.position = pos;
+            transform.position = new Vector2(startX, transform.position.y);
         }
     }
 }

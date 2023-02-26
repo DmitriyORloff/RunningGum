@@ -36,9 +36,9 @@ public class SpeedManager : MonoBehaviour
         return y;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        clock += Time.deltaTime;
+        clock += Time.fixedDeltaTime;
         speed = GetSpeed();
     }
 }

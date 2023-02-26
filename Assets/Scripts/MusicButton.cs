@@ -7,21 +7,17 @@ public class MusicButton : MonoBehaviour
 {
     public Sprite onMusic;
     public Sprite offMusic;
-    // Start is called before the first frame update
     void Start()
     {
         UpdateSprite();
     }
     public void UpdateSprite()
     {
-        if (PlayerPrefs.GetInt("music") == 1)
-            GetComponent<Image>().sprite = onMusic;
-        else
-            GetComponent<Image>().sprite = offMusic;
+        GetComponent<Image>().sprite = PlayerPrefs.GetInt("music") == 1 ? onMusic : offMusic;
     }
     public void HandleClick()
     {
-        GameObject.FindGameObjectWithTag("BG_MUSIC_CREATED").GetComponent<Music>().offSound();
+        GameObject.FindGameObjectWithTag("BG_MUSIC_CREATED").GetComponent<Music>().ToggleMusic();
         UpdateSprite();
     }
 }

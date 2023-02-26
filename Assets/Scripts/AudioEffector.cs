@@ -15,40 +15,18 @@ public class AudioEffector : MonoBehaviour
         ButtonTap
     }
 
-    public bool isOn;
     private AudioSource ad;
 
     void Start()
     {
         ad = GetComponent<AudioSource>();
-        if (PlayerPrefs.GetInt("effects") == 1)
-            AtSoundOn();
-        else
-            AtSoundOff();
+        ad.mute = PlayerPrefs.GetInt("effects") == 0;
     }
 
     public void ToggleSound()
     {
-        if (isOn)
-        {
-            PlayerPrefs.SetInt("effects", 0);
-            AtSoundOff();
-        }
-        else
-        {
-            PlayerPrefs.SetInt("effects", 1);
-            AtSoundOn();
-        }
-    }
-    private void AtSoundOff()
-    {
-        ad.mute = true;
-        isOn = false;
-    }
-    private void AtSoundOn()
-    {
-        ad.mute = false;
-        isOn = true;
+        ad.mute = !ad.mute;
+        PlayerPrefs.SetInt("effects", ad.mute ? 0 : 1);
     }
     public void Playback(Clips clipTag)
     {

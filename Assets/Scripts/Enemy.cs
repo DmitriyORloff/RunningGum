@@ -15,17 +15,11 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        transform.Translate(Vector2.left * speedManager.Speed * Time.timeScale);
+        transform.Translate(speedManager.Speed * Time.deltaTime * Vector2.left);
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    public void Pop()
     {
-        
-        if (other.CompareTag("Player"))
-        {
-            GameObject.FindGameObjectWithTag("BG_EFFECTS_CREATED").GetComponent<AudioEffector>().Playback(AudioEffector.Clips.EnemyCollision);
-            Instantiate(effect, transform.position, Quaternion.identity);
-            other.GetComponent<Player>().health -= damage;
-            Destroy(gameObject);
-        }
+        Instantiate(effect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

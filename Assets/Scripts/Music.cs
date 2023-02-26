@@ -6,38 +6,17 @@ using UnityEngine.UI;
 
 public class Music : MonoBehaviour
 {
-    public bool isOn;
-    public AudioSource ad;
+    private AudioSource ad;
 
     void Start()
     {
-        if (PlayerPrefs.GetInt("music") == 1)
-            AtSoundOn();
-        else
-            AtSoundOff();
+        ad = GetComponent<AudioSource>();
+        ad.mute = PlayerPrefs.GetInt("music") == 0;
     }
 
-    public void offSound()
+    public void ToggleMusic()
     {
-        if (isOn)
-        {
-            PlayerPrefs.SetInt("music", 0);
-            AtSoundOff();
-        }
-        else 
-        { 
-            PlayerPrefs.SetInt("music", 1);
-            AtSoundOn();
-        }
-    }
-    private void AtSoundOff()
-    {
-        ad.enabled = false;
-        isOn = false;
-    }
-    private void AtSoundOn()
-    {
-        ad.enabled = true;
-        isOn = true;
+        ad.mute = !ad.mute;
+        PlayerPrefs.SetInt("music", ad.mute ? 0 : 1);
     }
 }
